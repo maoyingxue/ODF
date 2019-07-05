@@ -19,6 +19,6 @@ def calPoints(info):
 def calGridnums(info):
     return results
 #计算端口信息
-def predictPorts(image, points, x_num, y_num):
+def predictPorts(info):
     return results
     
