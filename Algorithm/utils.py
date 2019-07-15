@@ -3,7 +3,7 @@
 Created on Fri Jul  5 09:49:54 2019
 """
 #类型和颜色对应信息
-type2color={1:["green","red"],
+type2color={1:["cyan","red"],
             2:["black","red"],
             3:["green","blue"],
             4:["green","red"],
