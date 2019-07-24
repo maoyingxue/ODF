@@ -48,7 +48,8 @@ def regOrientationBatch(img, info):
     # 二值化
     gray = cv2.cvtColor(img_yellow, cv2.COLOR_RGB2GRAY)
     retval, binary = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)
-    binary, contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    #binary, contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     # 如果轮廓数目较多,去除较大的轮廓(线性轮廓像素点一般比较少)
     if len(contours) > 100:
         contours = [c for c in contours if len(c) > 150]

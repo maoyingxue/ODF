@@ -9,16 +9,29 @@ info:为接口定义的json输入文件
 results：为定义的json输出文件
 """
 from Algorithm.grid_analysis import grid_analyzer
-
+from Algorithm.classification.classify import Classify
+from constant import TYPE_2_COLOR,IMG_DIR
+from Algorithm.getpoints.points import calpoints
+import cv2
 
 # 计算元分类
+cls=Classify()
 def calType(img):
     # 输入图片
+    types=cls.predict(img)
+    color=TYPE_2_COLOR[int(types)]
+    #print(color)
+    results={}
+    results["outerColor"]=color[0]
+    results["innerColor"]=color[1]
     return results
 
 
 # 计算边界点
 def calPoints(info):
+    img=cv2.imread(IMG_DIR+"/"+info["addr"])
+    results={}
+    results["points"]=calpoints(img,info)
     return results
 
 

@@ -41,7 +41,8 @@ def Segmentation(img, odf_type):
         mask_2 = cv2.morphologyEx(mask_2, cv2.MORPH_OPEN, kernel)
         mask = cv2.bitwise_or(mask_1, mask_2)
         # cv2.imshow("we", mask)
-        image, contours, h = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        #image, contours, h = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        contours, h = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         max_area = 0
         idx = 0
         for i in range(len(contours)):

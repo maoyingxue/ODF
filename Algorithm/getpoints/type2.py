@@ -70,7 +70,7 @@ def getpoint(image,box_addr):
         miny=int(min(h1,h2))
         maxy=int(max(h1,h2))
     print(miny,maxy)
-    cv2.imshow("image4text", image4text)
+    #cv2.imshow("image4text", image4text)
     
     Img=image.copy()
     HSV = cv2.cvtColor(Img, cv2.COLOR_BGR2HSV)

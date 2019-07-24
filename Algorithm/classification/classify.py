@@ -12,7 +12,7 @@ import os
 import operator
 class Classify():
     def __init__(self):
-        self.getTrainFeature("trainData.txt")
+        self.getTrainFeature("Algorithm/classification/trainData.txt")
     def getTrainFeature(self,path,reload=False):
         if os.path.exists(path) and reload==False:
             self.trainData=pickle.load(open(path,"rb"))
