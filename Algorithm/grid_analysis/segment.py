@@ -21,7 +21,7 @@ def Segmentation(img, odf_type):
         :param odf_type:机架类型
         :return: (x_num,y_num)
         """
-    if odf_type == 4 or odf_type == 2 or odf_type == 6 or odf_type == 1:
+    if odf_type == 3 or odf_type == 4 or odf_type == 2 or odf_type == 6 or odf_type == 1:
         high, width = img.shape[:2]
         # img=cv2.resize(img,(width,high))
         ROIYUV = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
@@ -161,3 +161,5 @@ def Segmentation(img, odf_type):
             return 12, 4
         else:
             return 12, 6
+    else:
+        return -1, -1

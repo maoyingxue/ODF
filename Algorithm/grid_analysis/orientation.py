@@ -53,7 +53,7 @@ def regOrientationBatch(img, info):
     if len(contours) > 100:
         contours = [c for c in contours if len(c) > 150]
     if len(contours) <= 0:
-        logger.info("Not supported image content")
+        logger.info("Not supported lines contours content")
         # print("Not supported image content.")
         # continue
         return res
@@ -89,9 +89,11 @@ def regOrientationBatch(img, info):
     logger.debug("Vertical counter {}.".format(ver_cnt))
     if ver_cnt > hor_cnt:
         res = 0
+        logger.info("Image [{}]: orientation is type [{}].".format(info[ADDR], res))
         return res
     else:
         res = 1
+        logger.info("Image [{}]: orientation is type [{}].".format(info[ADDR], res))
         return res
 
 #

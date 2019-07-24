@@ -8,11 +8,14 @@
 @file: constant.py
 @time: 2019-07-19 16:58
 @version 1.0
-@desc:
+@desc: 定义了系统全局配置信息
 """
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+IMG_DIR = 'stores/images'
+CONFIG_DIR = 'stores/config'
 
 # 机架颜色的字符串常量
 BLUE_STR = 'blue'
@@ -29,14 +32,17 @@ ROW = 'row'  # 机架行数
 COL = 'col'  # 机架列数
 
 GRID_ANALYZER_INPUT_KEYS = [OUTER_COLOR, INNER_COLOR, ADDR, POINTS]
+UNKNOWN_STR = 'Unknown'
 # 类型_颜色对照表
 TYPE_2_COLOR = {1: ["cyan", "red"],
                 2: ["black", "red"],
                 3: ["green", "blue"],
                 4: ["green", "red"],
-                5: ["grey", "blue"],
-                6: ["blue", "red"]
+                5: ["gray", "blue"],
+                6: ["blue", "red"],
+                -1: [UNKNOWN_STR, UNKNOWN_STR]
                 }
+
 # 颜色对应的hsv范围
 HSV_COLOR_RANGE = {"black": [[0, 180], [0, 255], [0, 46]],
                    "grey": [[0, 180], [0, 43], [46, 220]],
@@ -49,12 +55,3 @@ HSV_COLOR_RANGE = {"black": [[0, 180], [0, 255], [0, 46]],
                    "blue": [[100, 124], [43, 255], [46, 255]],
                    "purple": [[125, 155], [43, 255], [46, 255]]
                    }
-
-# # 颜色_类型对照表
-# COLOR_2_TYPE = {["cyan", "red"]: 1,
-#                 ["black", "red"]: 2,
-#                 ["green", "blue"]: 3,
-#                 ["green", "red"]: 4,
-#                 ["grey", "blue"]: 5,
-#                 ["blue", "red"]: 6
-#                 }

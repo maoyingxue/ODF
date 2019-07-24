@@ -14,27 +14,8 @@ from constant import *
 from Algorithm.grid_analysis.orientation import regOrientationBatch
 from Algorithm.grid_analysis.segment import Segmentation
 from utils.logging import logger
-
+from utils import common
 import cv2
-
-
-def queryTable(outer_color, inner_color, frame_type=None):
-    """
-    从系统定义的颜色—类型转换表中查询机架的类别
-    :param outer_color:
-    :param inner_color:
-    :param frame_type: 1~6
-    :return:
-    """
-    # input_color_pair = [outer_color, inner_color]
-    frame_type = -1
-    for it_type, color_pair in TYPE_2_COLOR.items():
-        # 机架色与卡槽色分别对应
-        if color_pair[0] == outer_color and color_pair[1] == inner_color:
-            frame_type = it_type
-    if frame_type == -1:
-        logger.warning('Unknown frame type for color composition: [{}, {}].'.format(outer_color, inner_color))
-    return frame_type
 
 
 def analysis(info):
@@ -55,21 +36,28 @@ def analysis(info):
         ROW: -1,
         COL: -1
     }
-    img_path = os.path.join(PROJECT_DIR, info[ADDR])
+    img_path = os.path.join(PROJECT_DIR, IMG_DIR, info[ADDR])
     img = cv2.imread(img_path)
     if img is None:
-        logger.warning("Can load image from {}.".format(info[ADDR]))
+        logger.error("Cannot load image from [{}].".format(info[ADDR]))
         return res
+    logger.debug("Analysis image: [{}]..........".format(info[ADDR]))
+    img = common.transform(img, info[POINTS])
     # 获取机架的光纤排布方向
     orientation = regOrientationBatch(img, info)
     if orientation == -1:
-        logger.warning("Unknown orientation of frame.")
-    frame_type = queryTable(info[OUTER_COLOR], info[INNER_COLOR])
+        logger.warning("Image :[{}]: Unknown orientation of frame.".format(info[ADDR]))
+    frame_type = common.queryType(info[OUTER_COLOR], info[INNER_COLOR])
+    if frame_type == -1:
+        logger.info("Image: [{}]: Unknown frame type.".format(info[ADDR]))
+        return res
     # 网格分割
     row, col = Segmentation(img, frame_type)
     res[IS_ROTATE] = orientation
     res[ROW] = row
     res[COL] = col
+    logger.debug("Analysis image done: [{}]..........".format(info[ADDR]))
+    logger.info("Image [{}]: Grid Analysis result: [{}].".format(info[ADDR], res))
     return res
     # regOrientationBatch()
 
