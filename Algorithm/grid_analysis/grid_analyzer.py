@@ -13,8 +13,8 @@
 from constant import *
 from Algorithm.grid_analysis.orientation import regOrientationBatch
 from Algorithm.grid_analysis.segment import Segmentation
-from utils.logging import logger
-from utils import common
+from Algorithm.utils.logging import logger
+from Algorithm.utils import common
 import cv2
 
 

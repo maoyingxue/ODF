@@ -12,7 +12,7 @@
 """
 import cv2
 import numpy as np
-from utils.logging import logger
+from Algorithm.utils.logging import logger
 from constant import *
 
 

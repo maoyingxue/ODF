@@ -16,7 +16,7 @@ import math
 import numpy as np
 import json
 import os
-from utils.logging import logger
+from Algorithm.utils.logging import logger
 
 
 def getHigh(points_list):

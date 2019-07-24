@@ -6,36 +6,34 @@ Created on Fri Jul  5 09:34:59 2019
 """
 
 from Interface import *
-import cv2
 from constant import *
-from utils import correct, getpoints
+import os
+import json
+
+img_base_dir = os.path.join('stores', 'images')
+config_base_dir = os.path.join('stores', 'config')
 
 
 def testGridAnalyzer():
-    resize_dir = 'origin_data/resize'
-    if not os.path.exists(resize_dir):
-        os.mkdir(resize_dir)
-    resize_path = os.path.join(resize_dir, 'type4_3.jpg')
-    img_path = "origin_data/test/type4_3.jpg"
-    img = cv2.imread(img_path)
-    img = cv2.resize(img, (0, 0), fx=0.25, fy=0.25)
-    frame_type = 4
-    if img is None:
-        print("Img is None.")
+    img_abs_dir = os.path.join(PROJECT_DIR, img_base_dir)
+    cfg_abs_dir = os.path.join(PROJECT_DIR, config_base_dir)
 
-    points = getpoints.getPoints(img, frame_type)
-    assert len(points) == 4
-    img_corrected = correct.transform(img, points)
-    cv2.imwrite(resize_path, img_corrected)
-    info = {
-        OUTER_COLOR: 'green',
-        INNER_COLOR: 'red',
-        ADDR: resize_path,
-        POINTS: points
-    }
-    res = calGridInfo(info)
-    print(res)
+    img_dirs = os.listdir(img_abs_dir)
+    cfg_dirs = os.listdir(cfg_abs_dir)
+
+    for img_dir in img_dirs:
+        img_filename, extention = os.path.splitext(img_dir)
+        if extention == '.jpg':
+            cfg_dir = img_filename + '.json'
+            if cfg_dir not in cfg_dirs:
+                raise Exception('Test must be specified a corresponding config for every image.')
+            config_path = os.path.join(cfg_abs_dir, cfg_dir)
+            info = json.load(open(config_path))
+            res = calGridInfo(info)
+            print(res)
 
 
 if __name__ == '__main__':
+    # common.labelPoints(img_base_dir, config_base_dir)
+    # common.formatColor(config_base_dir)
     testGridAnalyzer()
