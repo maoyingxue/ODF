@@ -16,7 +16,7 @@ from constant import PROJECT_DIR
 
 # 创建一个logger
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)  # Log等级总开关
+logger.setLevel(logging.NOTSET)  # Log等级总开关
 
 # 创建一个handler，用于写入日志文件
 logfile = os.path.join(PROJECT_DIR, 'log.txt')
@@ -27,11 +27,11 @@ fh = logging.FileHandler(logfile, mode='a+')
 # 日志级别为 NOTSET = 0,DEBUG = 10, INFO = 20 , WARNING = 30 ,ERROR = 40
 # >=所设置级别的日志才会被输出
 # ERROR 是最高级别
-fh.setLevel(logging.NOTSET)  # 输出到file的log等级的开关
+fh.setLevel(logging.DEBUG)  # 输出到file的log等级的开关
 
 # 再创建一个handler，用于输出到控制台
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)  # 输出到console的log等级的开关
+ch.setLevel(logging.NOTSET)  # 输出到console的log等级的开关
 
 # 定义handler的输出格式
 formatter = logging.Formatter("%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s")
