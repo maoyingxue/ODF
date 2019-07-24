@@ -8,12 +8,27 @@ Created on Fri Jul  5 09:34:59 2019
 from Interface import *
 from constant import *
 import os
+import cv2
 import json
 
 img_base_dir = os.path.join('stores', 'images')
 config_base_dir = os.path.join('stores', 'config')
+def TestcalType():
+    files=os.listdir(img_base_dir)
+    for file in files:
+        img=cv2.imread(img_base_dir+"/"+file)
+        results=calType(img)
+        print(file,results)
 
-
+def TestcalPoints():
+    configs=os.listdir(config_base_dir)
+    for config in configs:
+        print(config)
+        with open(config_base_dir+"/"+config, 'r') as load_f:
+            load_dict = json.load(load_f)
+        print(load_dict)
+        result=calPoints(load_dict)
+        print(result)
 def testGridAnalyzer():
     img_abs_dir = os.path.join(PROJECT_DIR, img_base_dir)
     cfg_abs_dir = os.path.join(PROJECT_DIR, config_base_dir)
@@ -36,4 +51,7 @@ def testGridAnalyzer():
 if __name__ == '__main__':
     # common.labelPoints(img_base_dir, config_base_dir)
     # common.formatColor(config_base_dir)
+    TestcalType()
+    TestcalPoints()
     testGridAnalyzer()
+
