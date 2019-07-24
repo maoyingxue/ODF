@@ -1,1 +1,26 @@
-{"addr": "3_1.jpg", "outercolor": "", "innercolor": "", "point": [], "isrotate": 0, "row": 0, "col": 0}
+{
+    "addr": "3_1.jpg",
+    "outerColor": "green",
+    "innerColor": "blue",
+    "isRotate": 0,
+    "row": 0,
+    "col": 0,
+    "points": [
+        [
+            420,
+            180
+        ],
+        [
+            2032,
+            240
+        ],
+        [
+            1912,
+            3760
+        ],
+        [
+            600,
+            3804
+        ]
+    ]
+}
