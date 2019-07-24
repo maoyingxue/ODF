@@ -1,1 +1,9 @@
-{"addr": "3_3.png", "outercolor": "", "innercolor": "", "point": [], "isrotate": 0, "row": 0, "col": 0}
+{
+    "addr": "3_3.png",
+    "outerColor": "green",
+    "innerColor": "blue",
+    "points": [],
+    "isRotate": 0,
+    "row": 0,
+    "col": 0
+}

@@ -1,1 +1,26 @@
-{"addr": "5_10.jpg", "outercolor": "", "innercolor": "", "point": [], "isrotate": 0, "row": 0, "col": 0}
+{
+    "addr": "5_10.jpg",
+    "outerColor": "gray",
+    "innerColor": "blue",
+    "isRotate": 0,
+    "row": 0,
+    "col": 0,
+    "points": [
+        [
+            1132,
+            716
+        ],
+        [
+            3456,
+            772
+        ],
+        [
+            3320,
+            2612
+        ],
+        [
+            1180,
+            2680
+        ]
+    ]
+}
