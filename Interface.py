@@ -9,6 +9,7 @@ info:为接口定义的json输入文件
 results：为定义的json输出文件
 """
 from Algorithm.grid_analysis import grid_analyzer
+from Algorithm.port_classification import get_port_classification_result
 from Algorithm.classification.classify import Classify
 from constant import TYPE_2_COLOR,IMG_DIR
 from Algorithm.getpoints.points import calpoints
@@ -42,4 +43,4 @@ def calGridInfo(info):
 
 # 计算端口信息
 def predictPorts(info):
-    return results
+    return get_port_classification_result(info)
