@@ -54,6 +54,7 @@ def testPredictPorts():
     cfg_dirs = os.listdir(cfg_abs_dir)
 
     for img_dir in img_dirs:
+        print(img_dir)
         img_filename, extention = os.path.splitext(img_dir)
         if extention == '.jpg':
             cfg_dir = img_filename + '.json'
