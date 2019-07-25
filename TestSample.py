@@ -64,6 +64,20 @@ def testPredictPorts():
             info = json.load(open(config_path))
             res = predictPorts(info)
             print(res)
+def overall():
+    files=os.listdir(img_base_dir)
+    for file in files:
+        print(file)
+        img=cv2.imread(img_base_dir+"/"+file)
+        results=calType(img)
+        results["addr"]=file
+        print(results)
+        results.update(calPoints(results))
+        print(results)
+        results.update(calGridInfo(results))
+        print(results)
+        results.update(predictPorts(results))
+        print(results)
 
 
 if __name__ == '__main__':
@@ -72,4 +86,5 @@ if __name__ == '__main__':
     # TestcalType()
     # TestcalPoints()
     # testGridAnalyzer()
-    testPredictPorts()
+    # testPredictPorts()
+    overall()
