@@ -141,6 +141,8 @@ def get_port_classification_result(info):
     isrotate = info[constant.IS_ROTATE]  # 横竖排
     row = info[constant.ROW]  # 行数
     col = info[constant.COL]  # 列数
+    if row==-1 or col==-1:
+        return {"result": "error"}
     #img_path = os.path.join(constant.PROJECT_DIR, constant.IMG_DIR, addr)
     img_path=constant.IMG_DIR+"/"+ addr
     #print(img_path)

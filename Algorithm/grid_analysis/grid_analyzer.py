@@ -53,13 +53,18 @@ def analysis(info):
         logger.info("Image: [{}]: Unknown frame type.".format(info[ADDR]))
         return res
     # 网格分割
-    row, col = Segmentation(img, frame_type)
-    res[IS_ROTATE] = orientation
-    res[ROW] = row
-    res[COL] = col
-    logger.debug("Analysis image done: [{}]..........".format(info[ADDR]))
-    logger.info("Image [{}]: Grid Analysis result: [{}].".format(info[ADDR], res))
-    return res
+    try:
+        row, col = Segmentation(img, frame_type)
+    except:
+        row=-1
+        col=-1
+    finally:
+        res[IS_ROTATE] = orientation
+        res[ROW] = row
+        res[COL] = col
+        logger.debug("Analysis image done: [{}]..........".format(info[ADDR]))
+        logger.info("Image [{}]: Grid Analysis result: [{}].".format(info[ADDR], res))
+        return res
     # regOrientationBatch()
 
 
