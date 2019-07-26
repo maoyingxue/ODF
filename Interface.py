@@ -25,7 +25,7 @@ def calType(img):
     results={}
     results["outerColor"]=color[0]
     results["innerColor"]=color[1]
-    return results
+    return types,results
 
 
 # 计算边界点

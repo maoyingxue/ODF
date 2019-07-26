@@ -17,7 +17,7 @@ def TestcalType():
     files=os.listdir(img_base_dir)
     for file in files:
         img=cv2.imread(img_base_dir+"/"+file)
-        results=calType(img)
+        _,results=calType(img)
         print(file,results)
 
 def TestcalPoints():
@@ -69,7 +69,7 @@ def overall():
     for file in files:
         print(file)
         img=cv2.imread(img_base_dir+"/"+file)
-        results=calType(img)
+        _,results=calType(img)
         results["addr"]=file
         print(results)
         results.update(calPoints(results))
