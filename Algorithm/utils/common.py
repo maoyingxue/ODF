@@ -210,7 +210,7 @@ def labelPoints(img_base_dir, config_base_dir, shrink=4):
         return
     for img_dir in dirs:
         filename, extention = os.path.splitext(img_dir)
-        if extention == '.jpg':
+        if extention == '.jpg' or extention == '.png':
             img_path = os.path.join(img_base_dir, img_dir)
             img = cv2.imread(img_path)
             # 方便标定，将图像缩小为原来的1/shrink

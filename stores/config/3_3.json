@@ -2,7 +2,24 @@
     "addr": "3_3.png",
     "outerColor": "green",
     "innerColor": "blue",
-    "points": [],
+    "points": [
+        [
+            212,
+            84
+        ],
+        [
+            540,
+            148
+        ],
+        [
+            460,
+            832
+        ],
+        [
+            156,
+            832
+        ]
+    ],
     "isRotate": 0,
     "row": 24,
     "col": 12

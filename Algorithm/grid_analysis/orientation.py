@@ -89,11 +89,11 @@ def regOrientationBatch(img, info):
     logger.debug("Horizontal counter {}.".format(hor_cnt))
     logger.debug("Vertical counter {}.".format(ver_cnt))
     if ver_cnt > hor_cnt:
-        res = 0
+        res = 1
         logger.info("Image [{}]: orientation is type [{}].".format(info[ADDR], res))
         return res
     else:
-        res = 1
+        res = 0
         logger.info("Image [{}]: orientation is type [{}].".format(info[ADDR], res))
         return res
 

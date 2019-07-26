@@ -151,7 +151,7 @@ def get_port_classification_result(info):
     image_change = utils.transform(img, points)  # 提取有效区域，并做仿生变换
     type = list(constant.TYPE_2_COLOR.keys())[
         list(constant.TYPE_2_COLOR.values()).index([outercolor, innercolor])]  # 根据机架色和卡槽色确定类型
-
+    print(info)
     gallery_path = os.path.join(os.path.join(os.path.join("Algorithm", "port_classification"), "gallery"),
                                 "type" + str(type))
     method = "knn"

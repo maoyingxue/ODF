@@ -13,22 +13,27 @@ import json
 
 img_base_dir = os.path.join('stores', 'images')
 config_base_dir = os.path.join('stores', 'config')
+
+
 def TestcalType():
-    files=os.listdir(img_base_dir)
+    files = os.listdir(img_base_dir)
     for file in files:
-        img=cv2.imread(img_base_dir+"/"+file)
-        results=calType(img)
-        print(file,results)
+        img = cv2.imread(img_base_dir + "/" + file)
+        results = calType(img)
+        print(file, results)
+
 
 def TestcalPoints():
-    configs=os.listdir(config_base_dir)
+    configs = os.listdir(config_base_dir)
     for config in configs:
         print(config)
-        with open(config_base_dir+"/"+config, 'r') as load_f:
+        with open(config_base_dir + "/" + config, 'r') as load_f:
             load_dict = json.load(load_f)
         print(load_dict)
-        result=calPoints(load_dict)
+        result = calPoints(load_dict)
         print(result)
+
+
 def testGridAnalyzer():
     img_abs_dir = os.path.join(PROJECT_DIR, img_base_dir)
     cfg_abs_dir = os.path.join(PROJECT_DIR, config_base_dir)
@@ -46,6 +51,8 @@ def testGridAnalyzer():
             info = json.load(open(config_path))
             res = calGridInfo(info)
             print(res)
+
+
 def testPredictPorts():
     img_abs_dir = os.path.join(PROJECT_DIR, img_base_dir)
     cfg_abs_dir = os.path.join(PROJECT_DIR, config_base_dir)
@@ -64,13 +71,15 @@ def testPredictPorts():
             info = json.load(open(config_path))
             res = predictPorts(info)
             print(res)
+
+
 def overall():
-    files=os.listdir(img_base_dir)
+    files = os.listdir(img_base_dir)
     for file in files:
         print(file)
-        img=cv2.imread(img_base_dir+"/"+file)
-        results=calType(img)
-        results["addr"]=file
+        img = cv2.imread(img_base_dir + "/" + file)
+        results = calType(img)
+        results["addr"] = file
         print(results)
         results.update(calPoints(results))
         print(results)

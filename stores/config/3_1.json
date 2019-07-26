@@ -1,26 +1,26 @@
 {
-    "addr": "3_1.jpg",
+    "addr": "3_2.png",
     "outerColor": "green",
     "innerColor": "blue",
-    "isRotate": 0,
-    "row": 26,
-    "col": 12,
     "points": [
         [
-            420,
+            428,
             180
         ],
         [
-            2032,
-            240
+            2008,
+            252
         ],
         [
-            1912,
-            3760
+            1900,
+            3748
         ],
         [
-            600,
+            576,
             3804
         ]
-    ]
+    ],
+    "isRotate": 0,
+    "row": 24,
+    "col": 12
 }
