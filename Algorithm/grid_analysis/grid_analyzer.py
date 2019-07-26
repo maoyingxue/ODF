@@ -36,7 +36,8 @@ def analysis(info):
         ROW: -1,
         COL: -1
     }
-    img_path = os.path.join(PROJECT_DIR, IMG_DIR, info[ADDR])
+    #img_path = os.path.join(PROJECT_DIR, IMG_DIR, info[ADDR])
+    img_path =  IMG_DIR+"/"+info[ADDR]
     img = cv2.imread(img_path)
     if img is None:
         logger.error("Cannot load image from [{}].".format(info[ADDR]))
