@@ -41,7 +41,8 @@ def getpoint(image,vis=True):
     distance4=0
     x=image.shape[1]//2
     y=image.shape[0]//2
-    
+    P1=np.array([[-1,-1]]);P2=np.array([[-1,-1]]);P3=np.array([[-1,-1]]);P4=np.array([[-1,-1]])
+    print("points", P1, P2, P3, P4)
     for c in Contours:
         for p in c:
             #print(p)
@@ -58,7 +59,7 @@ def getpoint(image,vis=True):
             if dis>distance4 and p[0][0]>x and p[0][1]>y:
                 distance4=dis
                 P4=p
-    #print(P1[0],P2[0],P3[0],P4[0])
+    print("points",P1,P2,P3,P4)
     #计算上下是否空盘
     result=calProjection(Mask)
     print(result)
@@ -89,6 +90,6 @@ def getpoint(image,vis=True):
     #print(P1[0],P2[0],P3[0],P4[0])
     return [P1[0].tolist(),P2[0].tolist(),P4[0].tolist(),P3[0].tolist()]
 if __name__=='__main__':
-    image = cv2.imread('E:/maoyingxue/ODF-Port-Identification/stores/images/1_1.jpg')
+    image = cv2.imread('/home/iris/Documents/ODF-Port-Identification/stores/images/1_1.jpg')
     print(image.shape)
-    getpoint(image)
+    getpoint(image,False)

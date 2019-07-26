@@ -172,5 +172,8 @@ def getpoint(image,box_addr):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
     return [P1[0].tolist(),P2[0].tolist(),P4[0].tolist(),P3[0].tolist()]
-
+if __name__=='__main__':
+    image = cv2.imread('/home/iris/Documents/ODF-Port-Identification/stores/images/2_1.jpg')
+    print(image.shape)
+    getpoint(image,"2_1")
 
