@@ -43,7 +43,7 @@ def testGridAnalyzer():
 
     for img_dir in img_dirs:
         img_filename, extention = os.path.splitext(img_dir)
-        if extention == '.jpg':
+        if extention == '.jpg' or extention == '.png':
             cfg_dir = img_filename + '.json'
             if cfg_dir not in cfg_dirs:
                 raise Exception('Test must be specified a corresponding config for every image.')
@@ -94,6 +94,6 @@ if __name__ == '__main__':
     # common.formatColor(config_base_dir)
     # TestcalType()
     # TestcalPoints()
-    # testGridAnalyzer()
+    testGridAnalyzer()
     # testPredictPorts()
-    overall()
+    # overall()

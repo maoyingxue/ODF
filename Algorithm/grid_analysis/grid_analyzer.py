@@ -26,6 +26,7 @@ def analysis(info):
     :return:
     """
     res = {}
+    logger.debug("Analysis image: [{}]..........".format(info[ADDR]))
     # 确保输入字段的完整性
     for key in GRID_ANALYZER_INPUT_KEYS:
         if key not in info:
@@ -43,7 +44,6 @@ def analysis(info):
     if img is None:
         logger.error("Cannot load image from [{}].".format(info[ADDR]))
         return res
-    logger.debug("Analysis image: [{}]..........".format(info[ADDR]))
     img = common.transform(img, info[POINTS])
     img = cv2.resize(img, (0, 0), fx=0.25, fy=0.25)
     # 获取机架的光纤排布方向
