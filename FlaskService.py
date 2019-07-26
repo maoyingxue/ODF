@@ -17,10 +17,10 @@ def getTypebyAddr():
     try:
         data = request.get_data().decode("utf-8")
         data = json.loads(data)
-        img = cv2.imread(data["addr"])
     except:
         return json.dumps({"error": "json format error!"})
     else:
+        img = cv2.imread(data["addr"])
         result = calType(img)
         result["addr"] = data["addr"]
         sendData = json.dumps(result).encode("utf-8")
