@@ -41,7 +41,7 @@ def getpoint(image,vis=True):
     distance4=0
     x=image.shape[1]//2
     y=image.shape[0]//2
-    P1 = np.array([[-1, -1]]);P2 = np.array([[-1, -1]]);P3 = np.array([[-1, -1]]);P4 = np.array([[-1, -1]])
+    P1=np.array([[0,0]]);P2=np.array([[image.shape[1],0]]);P3=np.array([[image.shape[1],image.shape[0]]]);P4=np.array([[0,image.shape[0]]])
     for c in Contours:
         for p in c:
             #print(p)

@@ -41,7 +41,7 @@ def getpoint(image,vis=True):
     distance4=0
     x=image.shape[1]//2
     y=image.shape[0]//2
-    P1=np.array([[-1,-1]]);P2=np.array([[-1,-1]]);P3=np.array([[-1,-1]]);P4=np.array([[-1,-1]])
+    P1=np.array([[0,0]]);P2=np.array([[image.shape[1],0]]);P3=np.array([[image.shape[1],image.shape[0]]]);P4=np.array([[0,image.shape[0]]])
     print("points", P1, P2, P3, P4)
     for c in Contours:
         for p in c:
@@ -59,6 +59,7 @@ def getpoint(image,vis=True):
             if dis>distance4 and p[0][0]>x and p[0][1]>y:
                 distance4=dis
                 P4=p
+    print(image.shape)
     print("points",P1,P2,P3,P4)
     #计算上下是否空盘
     result=calProjection(Mask)
