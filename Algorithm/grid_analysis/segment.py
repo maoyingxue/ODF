@@ -21,7 +21,7 @@ def Segmentation(img, odf_type):
         :param odf_type:机架类型
         :return: (x_num,y_num)
         """
-    if odf_type == 3 or odf_type == 4 or odf_type == 2 or odf_type == 6 or odf_type == 1:
+    if odf_type == 4 or odf_type == 2 or odf_type == 6 or odf_type == 1:
         high, width = img.shape[:2]
         # img=cv2.resize(img,(width,high))
         ROIYUV = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
@@ -92,9 +92,12 @@ def Segmentation(img, odf_type):
                 start = 0
                 x_list.append(space)
         x_list.sort()
+        divisor = x_list[int(len(x_list) / 2)]
         x_list = [x for x in x_list if x > x_length * 0.8]  # 剔除间距过小的区域
+        if len(x_list) != 0:
+            divisor = x_list[0]
         x_num = 0
-        divisor = x_list[0]
+
         averge_list = []  # 用来计算单个区域的平均间隔
         most_num = find_most(x_list)
         for num in x_list:
@@ -129,10 +132,12 @@ def Segmentation(img, odf_type):
                 start = 0
                 y_list.append(space)
         y_list.sort()
+        divisor = y_list[int(len(y_list)/2)]
         y_list = [y for y in y_list if y > y_length * 0.8]  # 剔除间距过小的区域
-
+        if len(y_list) != 0:
+            divisor = y_list[0]
         y_num = 0
-        divisor = y_list[0]
+
         averge_list = []  # 用来计算单个区域的平均间隔
         most_num = find_most(y_list)  # 找列表的
         for num in y_list:
