@@ -83,8 +83,8 @@ def overall():
 if __name__ == '__main__':
     # common.labelPoints(img_base_dir, config_base_dir)
     # common.formatColor(config_base_dir)
-    # TestcalType()
-    # TestcalPoints()
-    # testGridAnalyzer()
-    # testPredictPorts()
-    overall()
+    TestcalType()
+    TestcalPoints()
+    testGridAnalyzer()
+    testPredictPorts()
+    #overall()
