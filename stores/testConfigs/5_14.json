@@ -1,0 +1,26 @@
+{
+    "addr": "stores/testImages/5_14.jpg",
+    "outerColor": "gray",
+    "innerColor": "blue",
+    "isRotate": 0,
+    "row": 6,
+    "col": 12,
+    "points": [
+        [
+            916,
+            372
+        ],
+        [
+            3384,
+            428
+        ],
+        [
+            3396,
+            2500
+        ],
+        [
+            912,
+            2456
+        ]
+    ]
+}
