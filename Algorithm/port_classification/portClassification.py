@@ -144,9 +144,9 @@ def get_port_classification_result(info):
     if row==-1 or col==-1:
         return {"result": "error"}
     #img_path = os.path.join(constant.PROJECT_DIR, constant.IMG_DIR, addr)
-    img_path=constant.IMG_DIR+"/"+ addr
+    #img_path=constant.IMG_DIR+"/"+ addr
     #print(img_path)
-    img = cv2.imread(img_path)
+    img = cv2.imread(addr)
     print("img shape:", img.shape)
     image_change = utils.transform(img, points)  # 提取有效区域，并做仿生变换
     type = list(constant.TYPE_2_COLOR.keys())[

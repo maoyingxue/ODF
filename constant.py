@@ -14,10 +14,10 @@ import os
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 #测试图片存储路径
-IMG_DIR = 'stores/images'
-CONFIG_DIR = 'stores/config'
+IMG_DIR = 'stores/testImages'
+CONFIG_DIR = 'stores/testConfigs'
 #图片自定义存储路径
-IMG_PATH=''
+IMG_PATH='stores/images'
 # 机架颜色的字符串常量
 BLUE_STR = 'blue'
 RED_STR = 'red'

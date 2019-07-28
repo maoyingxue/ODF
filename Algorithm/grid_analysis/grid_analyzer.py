@@ -38,9 +38,11 @@ def analysis(info):
         ROW: -1,
         COL: -1
     }
+    if info[POINTS]=='unsupported':
+        return res
     # img_path = os.path.join(PROJECT_DIR, IMG_DIR, info[ADDR])
-    img_path = IMG_DIR + "/" + info[ADDR]
-    img = cv2.imread(img_path)
+    #img_path = IMG_DIR + "/" + info[ADDR]
+    img = cv2.imread(info[ADDR])
     if img is None:
         logger.error("Cannot load image from [{}].".format(info[ADDR]))
         return res

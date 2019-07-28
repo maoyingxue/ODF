@@ -11,14 +11,13 @@ results：为定义的json输出文件
 from Algorithm.grid_analysis import grid_analyzer
 from Algorithm.port_classification import get_port_classification_result
 from Algorithm.classification.classify import Classify
-from constant import TYPE_2_COLOR, IMG_DIR
+from constant import TYPE_2_COLOR, IMG_PATH
 from Algorithm.getpoints.points import calpoints
 import cv2
+import uuid
 
 # 计算元分类
 cls = Classify()
-
-
 def calType(img):
     # 输入图片
     types = cls.predict(img)
@@ -27,14 +26,17 @@ def calType(img):
     results = {}
     results["outerColor"] = color[0]
     results["innerColor"] = color[1]
+    unique_filename = str(uuid.uuid4())
+    addr=IMG_PATH+"/"+types+"_"+unique_filename+".jpg"
+    cv2.imwrite(addr,img)
+    results["addr"]=addr
     return results
 
 
 # 计算边界点
 def calPoints(info):
-    img = cv2.imread(IMG_DIR + "/" + info["addr"])
     results = {}
-    results["points"] = calpoints(img, info)
+    results["points"] = calpoints(info)
     return results
 
 

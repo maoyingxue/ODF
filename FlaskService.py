@@ -22,7 +22,6 @@ def getTypebyAddr():
     else:
         img = cv2.imread(data["addr"])
         result = calType(img)
-        result["addr"] = data["addr"]
         sendData = json.dumps(result).encode("utf-8")
         return sendData
 
