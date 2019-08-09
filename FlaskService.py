@@ -36,7 +36,7 @@ def getTypebyRemoteAddr():
         ftp = FTP()
         ftp.connect(data["ip"], int(data["port"]))  # 连接的ftp sever和端口
         ftp.login(data["user"], data["password"])
-        path = "cache/"+data["filename"]
+        path = "stores/cache/"+data["filename"]
         ftp.cwd(data["path"])
         file = open(path, "wb").write
         ftp.retrbinary('RETR '+data["filename"], file)
