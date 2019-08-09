@@ -29,22 +29,23 @@ def getTypebyAddr():
 
 @app.route('/remoteaddr', methods=['POST'])
 def getTypebyRemoteAddr():
-    # try:
+    try:
         data = request.get_data().decode("utf-8")
         data = json.loads(data)
         print(data)
         ftp = FTP()
-        ftp.connect(data["ip"], data["port"])  # 连接的ftp sever和端口
+        ftp.connect(data["ip"], int(data["port"]))  # 连接的ftp sever和端口
         ftp.login(data["user"], data["password"])
-        path = "image/1.jpg"
-        file = open(data["addr"], "wb").write
-        ftp.retrbinary(path, file)
-        # img=cv2.imread(path)
-    # except:
-    #     return json.dumps({"error": "json format error!"})
-    # else:
-        result = calType(file)
-        result["addr"] = path
+        path = "cache/"+data["filename"]
+        ftp.cwd(data["path"])
+        file = open(path, "wb").write
+        ftp.retrbinary('RETR '+data["filename"], file)
+        img=cv2.imread(path)
+    except:
+        return json.dumps({"error": "json format error!"})
+    else:
+        result = calType(img)
+        #result["addr"] = path
         sendData = json.dumps(result).encode("utf-8")
         return sendData
 
