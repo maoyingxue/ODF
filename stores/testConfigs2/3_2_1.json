@@ -3,7 +3,7 @@
     "outerColor": "green",
     "innerColor": "blue",
     "points": [],
-    "isRotate": -1,
+    "isRotate": 0,
     "row": -1,
     "col": -1
 }

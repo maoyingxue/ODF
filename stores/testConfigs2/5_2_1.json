@@ -2,7 +2,7 @@
     "addr": "stores/testImages2/5_2_1.jpg",
     "outerColor": "gray",
     "innerColor": "blue",
-    "isRotate": -1,
+    "isRotate": 0,
     "row": -1,
     "col": -1,
     "points": []
