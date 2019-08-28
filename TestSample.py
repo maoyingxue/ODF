@@ -10,6 +10,7 @@ from constant import *
 import os
 import cv2
 import json
+from Algorithm.utils import common
 
 
 def TestcalType():
@@ -78,11 +79,13 @@ def overall():
         print(results)
 
 
+IMG_BASE_DIR = os.path.join(PROJECT_DIR, IMG_DIR_TWO)
+CONFIG_BASE_DIR = os.path.join(PROJECT_DIR,CONFIG_DIR_TWO)
 if __name__ == '__main__':
-    # common.labelPoints(img_base_dir, config_base_dir)
+    common.labelPoints(IMG_BASE_DIR, CONFIG_BASE_DIR)
     # common.formatColor(config_base_dir)
     # TestcalType()
     # TestcalPoints()
     # testGridAnalyzer()
     # testPredictPorts()
-    overall()
+    # overall()

@@ -15,7 +15,9 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 #测试图片存储路径
 IMG_DIR = 'stores/testImages'
+IMG_DIR_TWO = 'stores/testImages2'
 CONFIG_DIR = 'stores/testConfigs'
+CONFIG_DIR_TWO = 'stores/testConfigs2'
 #图片自定义存储路径
 IMG_PATH='stores/images'
 # 机架颜色的字符串常量
