@@ -49,7 +49,7 @@ def regOrientationBatch(img, info):
     gray = cv2.cvtColor(img_yellow, cv2.COLOR_RGB2GRAY)
     retval, binary = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)
     #binary, contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    _,contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     # 如果轮廓数目较多,去除较大的轮廓(线性轮廓像素点一般比较少)
     if len(contours) > 100:
         contours = [c for c in contours if len(c) > 150]
@@ -89,11 +89,11 @@ def regOrientationBatch(img, info):
     logger.debug("Horizontal counter {}.".format(hor_cnt))
     logger.debug("Vertical counter {}.".format(ver_cnt))
     if ver_cnt > hor_cnt:
-        res = 0
+        res = 1
         logger.info("Image [{}]: orientation is type [{}].".format(info[ADDR], res))
         return res
     else:
-        res = 1
+        res = 0
         logger.info("Image [{}]: orientation is type [{}].".format(info[ADDR], res))
         return res
 

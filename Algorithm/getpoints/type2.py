@@ -92,7 +92,7 @@ def getpoint(image,box_addr):
         BlueThings = cv2.bitwise_and(Img, Img, mask=Mask)
         cv2.imshow("images2", np.hstack([Img, BlueThings]))
     #cv2.imwrite("type/type2_1.jpg",np.hstack([Img, BlueThings]))
-    Contours, Hierarchy = cv2.findContours(Mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    _,Contours, Hierarchy = cv2.findContours(Mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     Contours = sorted(Contours, key=lambda c: c.shape[0], reverse=True)
     Contours = [c for c in Contours if len(c) > 5 ]
     #cv2.drawContours(image,Contours,-1,(0,255,0),3)
@@ -172,5 +172,8 @@ def getpoint(image,box_addr):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
     return [P1[0].tolist(),P2[0].tolist(),P4[0].tolist(),P3[0].tolist()]
-
+if __name__=='__main__':
+    image = cv2.imread('/home/iris/Documents/ODF-Port-Identification/stores/images/2_1.jpg')
+    print(image.shape)
+    getpoint(image,"2_1")
 

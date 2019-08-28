@@ -16,6 +16,7 @@ from Algorithm.grid_analysis.segment import Segmentation
 from Algorithm.utils.logging import logger
 from Algorithm.utils import common
 import cv2
+import time
 
 
 def analysis(info):
@@ -25,6 +26,7 @@ def analysis(info):
     :return:
     """
     res = {}
+    logger.debug("Analysis image: [{}]..........".format(info[ADDR]))
     # 确保输入字段的完整性
     for key in GRID_ANALYZER_INPUT_KEYS:
         if key not in info:
@@ -36,13 +38,16 @@ def analysis(info):
         ROW: -1,
         COL: -1
     }
-    img_path = os.path.join(PROJECT_DIR, IMG_DIR, info[ADDR])
-    img = cv2.imread(img_path)
+    if info[POINTS]=='unsupported':
+        return res
+    # img_path = os.path.join(PROJECT_DIR, IMG_DIR, info[ADDR])
+    #img_path = IMG_DIR + "/" + info[ADDR]
+    img = cv2.imread(info[ADDR])
     if img is None:
         logger.error("Cannot load image from [{}].".format(info[ADDR]))
         return res
-    logger.debug("Analysis image: [{}]..........".format(info[ADDR]))
     img = common.transform(img, info[POINTS])
+    img = cv2.resize(img, (0, 0), fx=0.25, fy=0.25)
     # 获取机架的光纤排布方向
     orientation = regOrientationBatch(img, info)
     if orientation == -1:
@@ -52,13 +57,21 @@ def analysis(info):
         logger.info("Image: [{}]: Unknown frame type.".format(info[ADDR]))
         return res
     # 网格分割
-    row, col = Segmentation(img, frame_type)
-    res[IS_ROTATE] = orientation
-    res[ROW] = row
-    res[COL] = col
-    logger.debug("Analysis image done: [{}]..........".format(info[ADDR]))
-    logger.info("Image [{}]: Grid Analysis result: [{}].".format(info[ADDR], res))
-    return res
+    try:
+        start = time.time()
+        row, col = Segmentation(img, frame_type)
+        end = time.time() - start
+        logger.info("Time consumption: [{}]........".format(end))
+    except:
+        row = -1
+        col = -1
+    finally:
+        res[IS_ROTATE] = orientation
+        res[ROW] = row
+        res[COL] = col
+        logger.debug("Analysis image done: [{}]..........".format(info[ADDR]))
+        logger.info("Image [{}]: Grid Analysis result: [{}].".format(info[ADDR], res))
+        return res
     # regOrientationBatch()
 
 

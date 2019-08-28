@@ -11,66 +11,64 @@ import os
 import cv2
 import json
 
-img_base_dir = os.path.join('stores', 'images')
-config_base_dir = os.path.join('stores', 'config')
+
 def TestcalType():
-    files=os.listdir(img_base_dir)
+    files = os.listdir(IMG_DIR)
     for file in files:
-        img=cv2.imread(img_base_dir+"/"+file)
-        results=calType(img)
-        print(file,results)
+        img = cv2.imread(IMG_DIR + "/" + file)
+        results = calType(img)
+        print(file, results)
+
 
 def TestcalPoints():
-    configs=os.listdir(config_base_dir)
+    configs = os.listdir(CONFIG_DIR)
     for config in configs:
         print(config)
-        with open(config_base_dir+"/"+config, 'r') as load_f:
-            load_dict = json.load(load_f)
-        print(load_dict)
-        result=calPoints(load_dict)
+        info = json.load(open(CONFIG_DIR + "/" + config))
+        print(info)
+        result = calPoints(info)
         print(result)
-def testGridAnalyzer():
-    img_abs_dir = os.path.join(PROJECT_DIR, img_base_dir)
-    cfg_abs_dir = os.path.join(PROJECT_DIR, config_base_dir)
 
-    img_dirs = os.listdir(img_abs_dir)
-    cfg_dirs = os.listdir(cfg_abs_dir)
+
+def testGridAnalyzer():
+    img_dirs = os.listdir(IMG_DIR)
+    cfg_dirs = os.listdir(CONFIG_DIR)
 
     for img_dir in img_dirs:
         img_filename, extention = os.path.splitext(img_dir)
-        if extention == '.jpg':
+        if extention == '.jpg' or extention == '.png':
             cfg_dir = img_filename + '.json'
             if cfg_dir not in cfg_dirs:
                 raise Exception('Test must be specified a corresponding config for every image.')
-            config_path = os.path.join(cfg_abs_dir, cfg_dir)
+            config_path = os.path.join(CONFIG_DIR, cfg_dir)
             info = json.load(open(config_path))
             res = calGridInfo(info)
             print(res)
-def testPredictPorts():
-    img_abs_dir = os.path.join(PROJECT_DIR, img_base_dir)
-    cfg_abs_dir = os.path.join(PROJECT_DIR, config_base_dir)
 
-    img_dirs = os.listdir(img_abs_dir)
-    cfg_dirs = os.listdir(cfg_abs_dir)
+
+def testPredictPorts():
+    img_dirs = os.listdir(IMG_DIR)
+    cfg_dirs = os.listdir(CONFIG_DIR)
 
     for img_dir in img_dirs:
         print(img_dir)
         img_filename, extention = os.path.splitext(img_dir)
-        if extention == '.jpg':
+        if extention == '.jpg' or extention == '.png':
             cfg_dir = img_filename + '.json'
             if cfg_dir not in cfg_dirs:
                 raise Exception('Test must be specified a corresponding config for every image.')
-            config_path = os.path.join(cfg_abs_dir, cfg_dir)
+            config_path = os.path.join(CONFIG_DIR, cfg_dir)
             info = json.load(open(config_path))
             res = predictPorts(info)
             print(res)
+
+
 def overall():
-    files=os.listdir(img_base_dir)
+    files = os.listdir(IMG_DIR)
     for file in files:
         print(file)
-        img=cv2.imread(img_base_dir+"/"+file)
-        results=calType(img)
-        results["addr"]=file
+        img = cv2.imread(IMG_DIR + "/" + file)
+        results = calType(img)
         print(results)
         results.update(calPoints(results))
         print(results)

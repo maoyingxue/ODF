@@ -31,7 +31,7 @@ def getpoint(image,vis=True):
         BlueThings = cv2.bitwise_and(Img, Img, mask=Mask)
         cv2.imshow("images2", np.hstack([Img, BlueThings]))
     #cv2.imwrite("type/type1_1.jpg",np.hstack([Img, BlueThings]))
-    Contours, Hierarchy = cv2.findContours(Mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    _,Contours, Hierarchy = cv2.findContours(Mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     #Contours = sorted(Contours, key=lambda c: c.shape[0], reverse=True)
     #Contours = [c for c in Contours if len(c) > 5 ]
     #cv2.drawContours(image,Contours,-1,(0,255,0),3)
@@ -41,7 +41,8 @@ def getpoint(image,vis=True):
     distance4=0
     x=image.shape[1]//2
     y=image.shape[0]//2
-    
+    P1=np.array([[0,0]]);P2=np.array([[image.shape[1],0]]);P3=np.array([[image.shape[1],image.shape[0]]]);P4=np.array([[0,image.shape[0]]])
+    print("points", P1, P2, P3, P4)
     for c in Contours:
         for p in c:
             #print(p)
@@ -58,7 +59,8 @@ def getpoint(image,vis=True):
             if dis>distance4 and p[0][0]>x and p[0][1]>y:
                 distance4=dis
                 P4=p
-    #print(P1[0],P2[0],P3[0],P4[0])
+    print(image.shape)
+    print("points",P1,P2,P3,P4)
     #计算上下是否空盘
     result=calProjection(Mask)
     print(result)
@@ -89,6 +91,6 @@ def getpoint(image,vis=True):
     #print(P1[0],P2[0],P3[0],P4[0])
     return [P1[0].tolist(),P2[0].tolist(),P4[0].tolist(),P3[0].tolist()]
 if __name__=='__main__':
-    image = cv2.imread('E:/maoyingxue/ODF-Port-Identification/stores/images/1_1.jpg')
+    image = cv2.imread('/home/iris/Documents/ODF-Port-Identification/stores/images/1_1.jpg')
     print(image.shape)
-    getpoint(image)
+    getpoint(image,False)
