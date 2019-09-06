@@ -80,8 +80,8 @@ def overall():
 
 if __name__ == '__main__':
     # common.formatColor(config_base_dir)
-    # TestcalType()
+    TestcalType()
     # TestcalPoints()
     # testGridAnalyzer()
     # testPredictPorts()
-    overall()
+    # overall()
