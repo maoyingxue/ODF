@@ -20,7 +20,7 @@ def getpoint(image,vis=True):
     upper = np.array([124, 255, 255], dtype="uint8")
     Mask = cv2.inRange(HSV, lower, upper)
     
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (6, 6))
     Mask = cv2.erode(Mask, kernel)
     Mask = cv2.dilate(Mask, kernel)
     
@@ -73,6 +73,7 @@ def getpoint(image,vis=True):
     P4[0]=(P4[0]*r2).astype(int)
     return [P1[0].tolist(),P2[0].tolist(),P4[0].tolist(),P3[0].tolist()]
 if __name__=='__main__':
-    image = cv2.imread('/home/iris/Documents/ODF-Port-Identification/stores/images/5_19.jpg')
+    image = cv2.imread('../../stores/testImages/5_6.jpg')
+    print(image.shape)
     #image=cv2.resize(image,(500,500))
     getpoint(image)
