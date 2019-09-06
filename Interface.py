@@ -21,7 +21,8 @@ cls = Classify()
 def calType(img):
     # 输入图片
     types = cls.predict(img)
-    color = TYPE_2_COLOR[int(types)]
+    tmp = types.split("_")
+    color = TYPE_2_COLOR[int(tmp[0])]
     # print(color)
     results = {}
     results["outerColor"] = color[0]

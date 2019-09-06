@@ -21,18 +21,20 @@ class Classify():
         else:
             self.trainFeature=[]
             self.trainLabels=[]
-            imgpath="Algorithm/classification/image"
+            imgpath="images"
             files=os.listdir(imgpath)
             for file in files:
                 tmp=file.split("_")
                 img=cv2.imread(os.path.join(imgpath,file))
+                print(file,img.shape)
                 img=cv2.resize(img,(500,700))
                 hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
                 hist1 = cv2.calcHist([hsv], [0], None, [9], [0, 180])
                 hist2 = cv2.calcHist([hsv], [1], None, [16], [0, 256])
                 hist = np.append(hist1, hist2)
                 self.trainFeature.append(hist)
-                self.trainLabels.append(tmp[0])
+                self.trainLabels.append(tmp[0]+"_"+tmp[1])
+                #print(hist,tmp[0]+"_"+tmp[1])
             self.trainFeature=np.array(self.trainFeature)
             pickle.dump({'trainFeature':self.trainFeature,'trainLabels':self.trainLabels},open(path,"wb"))
     def predict(self,img):
@@ -58,6 +60,6 @@ class Classify():
 if __name__=='__main__':
     cls=Classify()
     print(cls.trainFeature.shape)
-    img=cv2.imread("image/1_1.jpg")
+    img=cv2.imread("images/5_2_1.jpg")
     result=cls.predict(img)
     print(result)
