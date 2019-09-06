@@ -2,8 +2,25 @@
     "addr": "stores/testImages2/3_2_1.jpg",
     "outerColor": "green",
     "innerColor": "blue",
-    "points": [],
+    "points": [
+        [
+            544,
+            916
+        ],
+        [
+            976,
+            904
+        ],
+        [
+            1052,
+            2872
+        ],
+        [
+            716,
+            2880
+        ]
+    ],
     "isRotate": 0,
-    "row": -1,
-    "col": -1
+    "row": 13,
+    "col": 12
 }

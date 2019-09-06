@@ -3,7 +3,24 @@
     "outerColor": "gray",
     "innerColor": "blue",
     "isRotate": 0,
-    "row": -1,
-    "col": -1,
-    "points": []
+    "row": 4,
+    "col": 9,
+    "points": [
+        [
+            604,
+            2592
+        ],
+        [
+            948,
+            2584
+        ],
+        [
+            976,
+            3116
+        ],
+        [
+            628,
+            3112
+        ]
+    ]
 }
