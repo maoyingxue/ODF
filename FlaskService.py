@@ -89,6 +89,9 @@ def getgridnums():
     except:
         return json.dumps({"error": "json format error!"})
     else:
+        addr = data["addr"][:-4]
+        print(addr + ".json")
+        json.dump(data, open(addr + ".json", "w"), indent=4, sort_keys=False)
         result = calGridInfo(data)
         sendData = json.dumps(result).encode("utf-8")
         return sendData
@@ -102,6 +105,9 @@ def getports():
     except:
         return json.dumps({"error": "json format error!"})
     else:
+        addr = data["addr"][:-4]
+        print(addr + ".json")
+        json.dump(data, open(addr + ".json", "w"), indent=4, sort_keys=False)
         result = predictPorts(data)
         sendData = json.dumps(result).encode("utf-8")
         return sendData

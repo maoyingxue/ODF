@@ -13,6 +13,7 @@ from Algorithm.port_classification import get_port_classification_result
 from Algorithm.classification.classify import Classify
 from constant import TYPE_2_COLOR, IMG_PATH
 from Algorithm.getpoints.points import calpoints
+import json
 import cv2
 import uuid
 
@@ -48,4 +49,5 @@ def calGridInfo(info):
 
 # 计算端口信息
 def predictPorts(info):
+
     return get_port_classification_result(info)
