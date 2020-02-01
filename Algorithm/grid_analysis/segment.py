@@ -159,7 +159,7 @@ def Segmentation(img, odf_type):
             y_num = 28
         if abs(y_num - 24) < 2:
             y_num = 24
-        return x_num, y_num  # x_num为列数, y_num为行数
+        return y_num, x_num  # x_num为列数, y_num为行数
         # cv2.waitKey()
     elif odf_type == 5:
         high, width = img.shape[:2]
